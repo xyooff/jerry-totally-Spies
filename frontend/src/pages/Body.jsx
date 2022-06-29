@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import Intro from "./Intro";
+import Login from "./Login";
 
 export default function Body() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Intro />} />
+        <Route path="/" element={<Login />} />
       </Routes>
     </div>
   );

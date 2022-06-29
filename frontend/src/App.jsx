@@ -3,9 +3,11 @@ import Body from "./pages/Body";
 import "./App.css";
 
 function App() {
-  <div>
-    <Body />
-  </div>;
+  return (
+    <div>
+      <Body />
+    </div>
+  );
 }
 
 export default App;
