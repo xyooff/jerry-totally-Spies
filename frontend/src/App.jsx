@@ -1,14 +1,14 @@
+import React from "react";
 import ProjectsList from "./components/ProjectsList";
-import Body from "./pages/Body";
+import Header from "./components/Header";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
+      <Header />
       <ProjectsList />
-      <Body />
     </div>
   );
 }
-
 export default App;
