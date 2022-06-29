@@ -1,8 +1,22 @@
 header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 25px 25px 25px;
+    background-color: aquamarine;
 }
 
 .picto {
     display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+
+.picto img {
+    margin-right: 15px;
 }

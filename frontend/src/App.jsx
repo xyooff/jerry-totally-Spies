@@ -1,8 +1,12 @@
 import "./App.css";
 import React from "react";
-import Header from "./components/Header";
+import Body from "./pages/Body";
 
 function App() {
-  return <Header />;
+  return (
+    <div>
+      <Body />
+    </div>
+  );
 }
 export default App;
