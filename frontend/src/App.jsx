@@ -1,12 +1,11 @@
-import Home from "@pages/Home";
+import ProjectsList from "./components/ProjectsList";
 
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Home />
-      <p>coucou</p>
+      <ProjectsList />
     </div>
   );
 }
