@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Login from "./Login";
 import ProjetInfo from "./ProjetInfo";
+import AddProject from "./AddProject";
 import Home from "./Home";
 
 export default function Body() {
@@ -10,6 +11,7 @@ export default function Body() {
         <Route path="/" element={<Login />} />
         <Route path="/projet" element={<ProjetInfo />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/add-project" element={<AddProject />} />
       </Routes>
     </div>
   );

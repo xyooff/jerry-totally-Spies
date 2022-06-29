@@ -13,7 +13,9 @@ function Header() {
         <img width="25%" src={logo} alt="logo" />
       </Link>
       <div className="picto">
-        <img src={add} alt="add" />
+        <Link to="/add-project">
+          <img src={add} alt="add" />
+        </Link>
         <img src={profil} alt="profil" />
         <img src={search} alt="search" />
       </div>
