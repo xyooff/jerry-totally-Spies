@@ -1,10 +1,13 @@
+import ProjectsList from "./components/ProjectsList";
+import Body from "./pages/Body";
 import "./App.css";
 import React from "react";
 import Body from "./pages/Body";
 
 function App() {
   return (
-    <div>
+    <div className="App">
+      <ProjectsList />
       <Body />
     </div>
   );
