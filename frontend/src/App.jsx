@@ -1,6 +1,8 @@
 import ProjectsList from "./components/ProjectsList";
 import Body from "./pages/Body";
 import "./App.css";
+import React from "react";
+import Body from "./pages/Body";
 
 function App() {
   return (
@@ -10,5 +12,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
