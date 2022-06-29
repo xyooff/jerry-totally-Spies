@@ -1,10 +1,11 @@
+import ProjectsList from "./components/ProjectsList";
 import Body from "./pages/Body";
-
 import "./App.css";
 
 function App() {
   return (
-    <div>
+    <div className="App">
+      <ProjectsList />
       <Body />
     </div>
   );
