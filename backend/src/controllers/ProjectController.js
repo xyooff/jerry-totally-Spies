@@ -52,14 +52,14 @@ class PhotoController {
   };
 
   static add = (req, res) => {
-    const item = req.body;
+    const projet = req.body;
 
     // TODO validations (length, format...)
 
     models.project
-      .insert(item)
+      .insert(projet)
       .then(([result]) => {
-        res.status(201).send({ ...item, id: result.insertId });
+        res.status(201).send({ ...projet, id: result.insertId });
       })
       .catch((err) => {
         console.error(err);
