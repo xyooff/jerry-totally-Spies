@@ -24,5 +24,9 @@ const router = require("./router");
 
 app.use(router);
 
+const projectRouter = require("./ProjectRouter");
+
+app.use(projectRouter);
+
 // ready to export
 module.exports = app;
