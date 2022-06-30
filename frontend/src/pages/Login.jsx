@@ -30,7 +30,7 @@ export default function Login() {
         )
         .then((res) => setUserId(res.data.id))
         .then(() => {
-          swal("Successfully logged in").then(() => navigate("/ProjectLists"));
+          navigate("/ProjectsList");
         })
         .catch((err) => {
           swal(err.response.data.error);
@@ -45,27 +45,23 @@ export default function Login() {
       <img className="logo-img" src={logo} alt="user" />
       <img className="user-img" src={user} alt="user" />
       <form className="form-login" onSubmit={handleSubmit}>
-        <label htmlFor="email">
-          <input
-            className="inputPseudo"
-            type="email"
-            name="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
+        <input
+          className="inputPseudo"
+          type="email"
+          name="email"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
         <br />
-        <label htmlFor="password">
-          <input
-            className="inputLogPassword"
-            type="password"
-            name="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
+        <input
+          className="inputLogPassword"
+          type="password"
+          name="password"
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <br />
         <input className="loginButton" type="submit" value="CONNEXION" />
       </form>

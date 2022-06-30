@@ -30,7 +30,9 @@ class UserManager extends AbstractManager {
       INNER JOIN collaborators
       on user.id = collaborators.user_id
       INNER JOIN project
-      on collaborators.project_id = project.id`
+      on collaborators.project_id = project.id
+      INNER JOIN techno
+      on `
     );
   }
 

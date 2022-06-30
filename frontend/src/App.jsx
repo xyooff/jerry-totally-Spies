@@ -3,7 +3,7 @@ import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import { useState } from "react";
 import UserIdContext from "./components/UserIdContext";
 import Login from "./pages/Login";
-import ProjetInfo from "./pages/ProjetInfo";
+import ProjetInfo from "./pages/ProjectInfo";
 import AddProject from "./pages/AddProject";
 import Home from "./pages/Home";
 import ProjectsList from "./components/ProjectsList";
@@ -24,4 +24,5 @@ function App() {
     </Router>
   );
 }
+
 export default App;

@@ -10,7 +10,6 @@
   flex-direction: column;
   width: 30rem;
   margin: 0 auto;
-  gap: 1rem;
 }
 
 .form-login .inputPseudo,
