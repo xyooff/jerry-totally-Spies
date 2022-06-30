@@ -1,0 +1,11 @@
+.bloc-table {
+  margin: auto;
+  width: 90vw;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 50px;
+}
+
+thead {
+  background-color: lightblue;
+}
