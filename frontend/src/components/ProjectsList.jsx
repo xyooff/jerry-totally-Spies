@@ -1,7 +1,79 @@
 import "./ProjectsList.css";
-import tabItems from "../data";
 
 function ProjectsList() {
+  const tabItems = [
+    {
+      logo: "img",
+      agence: "NANTES",
+      name: "AIRBUS",
+      tech: "logo tech",
+      priority: "high",
+      deadline: "10/10/2022",
+      date: "01/07/2022",
+      state: "60%",
+    },
+    {
+      logo: "img",
+      agence: "NANTES",
+      name: "AIRBUS",
+      tech: "logo tech",
+      priority: "low",
+      deadline: "10/10/2022",
+      date: "01/07/2022",
+      state: "60%",
+    },
+    {
+      logo: "img",
+      agence: "NANTES",
+      name: "AIRBUS",
+      tech: "logo tech",
+      priority: "medium",
+      deadline: "10/10/2022",
+      date: "01/07/2022",
+      state: "60%",
+    },
+    {
+      logo: "img",
+      agence: "NANTES",
+      name: "AIRBUS",
+      tech: "logo tech",
+      priority: "high",
+      deadline: "10/10/2022",
+      date: "01/07/2022",
+      state: "60%",
+    },
+    {
+      logo: "img",
+      agence: "NANTES",
+      name: "AIRBUS",
+      tech: "logo tech",
+      priority: "high",
+      deadline: "10/10/2022",
+      date: "01/07/2022",
+      state: "60%",
+    },
+    {
+      logo: "img",
+      agence: "NANTES",
+      name: "AIRBUS",
+      tech: "logo tech",
+      priority: "high",
+      deadline: "10/10/2022",
+      date: "01/07/2022",
+      state: "60%",
+    },
+    {
+      logo: "img",
+      agence: "NANTES",
+      name: "AIRBUS",
+      tech: "logo tech",
+      priority: "high",
+      deadline: "10/10/2022",
+      date: "01/07/2022",
+      state: "60%",
+    },
+  ];
+
   return (
     <div className="list-page">
       <table className="bloc-table">
