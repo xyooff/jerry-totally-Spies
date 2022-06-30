@@ -5,8 +5,21 @@ class ProjectManager extends AbstractManager {
 
   insert(projet) {
     return this.connection.query(
-      `insert into ${ProjectManager.table} (title, description, avancement) values (?,?,?)`,
-      [projet.title, projet.description, projet.avancement]
+      `insert into ${ProjectManager.table} (title, description, priorite, deadline, datePublish, avancement) values (?,?,?,?,?,?)`,
+      [
+        projet.title,
+        projet.description,
+        projet.priorite,
+        projet.deadline,
+        projet.datePublish,
+        projet.avancement,
+      ]
+    );
+  }
+
+  findallinfos() {
+    return this.connection.query(
+      `SELECT * FROM ${this.table} INNER JOIN agence ON ${this.table}.agences_id=agence.id INNER JOIN tech ON tech.project_id=${this.table}.id WHERE tech.project_id = project.id`
     );
   }
 

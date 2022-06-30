@@ -1,10 +1,11 @@
 const express = require("express");
 
-const { ProjectController } = require("./controllers");
+const { ProjectController } = require("../controllers");
 
 const router = express.Router();
 
 router.get("/project", ProjectController.browse);
+router.get("/project/users", ProjectController.show);
 router.get("/project/:id", ProjectController.read);
 router.put("/project/:id", ProjectController.edit);
 router.post("/project", ProjectController.add);

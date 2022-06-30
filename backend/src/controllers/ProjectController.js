@@ -13,6 +13,18 @@ class PhotoController {
       });
   };
 
+  static show = (req, res) => {
+    models.project
+      .findallinfos()
+      .then(([rows]) => {
+        res.send(rows);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
+
   static read = (req, res) => {
     models.project
       .find(req.params.id)
