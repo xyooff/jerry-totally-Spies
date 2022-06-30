@@ -9,7 +9,7 @@ function ProjectsList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/project/users")
+      .get("http://localhost:5002/project/users")
       .then((res) => res.data)
       .then((data) => {
         setProjects(data);
