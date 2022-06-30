@@ -66,7 +66,11 @@ export default function Login() {
         <br />
         <input className="loginButton" type="submit" value="CONNEXION" />
       </form>
-      <button className="loginButton" type="button" onClick={() => addUser()}>
+      <button
+        className="registerButton"
+        type="button"
+        onClick={() => addUser()}
+      >
         S'enregistrer
       </button>
     </div>
