@@ -1,5 +1,6 @@
 import React from "react";
 import "./ProjectsList.css";
+import ProgressBar from "./ProgressBar";
 
 function ProjectsList() {
   const tabItems = [
@@ -11,7 +12,8 @@ function ProjectsList() {
       priority: "high",
       deadline: "10/10/2022",
       date: "01/07/2022",
-      state: "60%",
+      bgcolor: "#6a1b9a",
+      completed: 60,
     },
     {
       logo: "img",
@@ -21,7 +23,8 @@ function ProjectsList() {
       priority: "low",
       deadline: "10/10/2022",
       date: "01/07/2022",
-      state: "60%",
+      bgcolor: "#00695c",
+      completed: 30,
     },
     {
       logo: "img",
@@ -31,7 +34,8 @@ function ProjectsList() {
       priority: "medium",
       deadline: "10/10/2022",
       date: "01/07/2022",
-      state: "60%",
+      bgcolor: "#ef6c00",
+      completed: 70,
     },
     {
       logo: "img",
@@ -41,7 +45,8 @@ function ProjectsList() {
       priority: "high",
       deadline: "10/10/2022",
       date: "01/07/2022",
-      state: "60%",
+      bgcolor: "#ef6c00",
+      completed: 70,
     },
     {
       logo: "img",
@@ -51,7 +56,8 @@ function ProjectsList() {
       priority: "high",
       deadline: "10/10/2022",
       date: "01/07/2022",
-      state: "60%",
+      bgcolor: "#ef6c00",
+      completed: 70,
     },
     {
       logo: "img",
@@ -61,7 +67,8 @@ function ProjectsList() {
       priority: "high",
       deadline: "10/10/2022",
       date: "01/07/2022",
-      state: "60%",
+      bgcolor: "#ef6c00",
+      completed: 70,
     },
     {
       logo: "img",
@@ -71,7 +78,8 @@ function ProjectsList() {
       priority: "high",
       deadline: "10/10/2022",
       date: "01/07/2022",
-      state: "60%",
+      bgcolor: "#ef6c00",
+      completed: 70,
     },
   ];
 
@@ -101,7 +109,12 @@ function ProjectsList() {
                 <td>{item.priority}</td>
                 <td>{item.deadline}</td>
                 <td>{item.date}</td>
-                <td>{item.state}</td>
+                <td>
+                  <ProgressBar
+                    bgcolor={item.bgcolor}
+                    completed={item.completed}
+                  />
+                </td>
               </tr>
             </tbody>
           );
