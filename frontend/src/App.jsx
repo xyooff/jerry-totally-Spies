@@ -1,12 +1,11 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
+import "./App.css";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
-import React from "react";
 import Login from "./pages/Login";
 import ProjectInfo from "./pages/ProjectInfo";
 import AddProject from "./pages/AddProject";
 import Home from "./pages/Home";
 import ProjectsList from "./components/ProjectsList";
-import "./App.css";
 import AddUser from "./pages/AddUser";
 
 function App() {

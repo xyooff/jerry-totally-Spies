@@ -1,4 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import Header from "@components/Header";
 import orange from "../assets/orange.png";
 import map from "../assets/map.png";
@@ -12,7 +14,15 @@ export default function ProjectInfo() {
       <Header />
       <div className="col-container">
         <div className="col-gauche">
-          <span className="entreprise">L'entreprise:</span>
+          <ul className="wrapper">
+            <li className="icon github">
+              <span className="tooltip">Github</span>
+              <span>
+                <FontAwesomeIcon icon={faGithub} />
+              </span>
+            </li>
+          </ul>
+          <span className="entreprise">L'ntreprise:</span>
           <span>Orange</span>
           <span className="demande">Les postes:</span>
           <span> Developpeur front-end</span>
@@ -33,8 +43,11 @@ export default function ProjectInfo() {
         <div className="col-milieu">
           <img className="agence" width="30%" src={orange} alt="orange" />
           <hr />
+          <div className="like">
+            <input type="checkbox" />
+            <div className="hearth" />
+          </div>
           <div className="annonce">
-            <span>High </span>
             <span>
               <img className="personne" src={personne} alt="personne" />3
               personnes
@@ -49,6 +62,7 @@ export default function ProjectInfo() {
           </div>
           <p className="descriptif">Descriptif du poste</p>
           <p className="info">
+            <hr />
             "At vero eos et accusamus et iusto odio dignissimos ducimus qui
             blanditiis praesentium voluptatum deleniti atque corrupti quos
             dolores et quas molestias excepturi sint occaecati cupiditate non
