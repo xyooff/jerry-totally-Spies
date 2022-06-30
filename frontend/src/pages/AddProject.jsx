@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./styles/AddProject.css";
 import axios from "axios";
+import swal from "sweetalert";
 
 function AddProject() {
   const [title, setTitle] = useState("");
@@ -18,6 +19,7 @@ function AddProject() {
       `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
     );
     e.preventDefault();
+    swal("hello");
     axios
       .post(
         `${import.meta.env.VITE_BACKEND_URL}/project`,
@@ -38,6 +40,8 @@ function AddProject() {
       .catch((err) => {
         console.warn(err.response.data.error);
       });
+
+    swal("hello");
   };
   const handlechange = (e) => setTechno(e.target.value);
   return (
