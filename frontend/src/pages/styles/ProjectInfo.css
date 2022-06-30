@@ -4,9 +4,11 @@
   margin-top: 60px;
 }
 
-.entreprise {
+.descriptif {
   display: flex;
   justify-content: center;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 .col-container {
@@ -16,47 +18,48 @@
 .col-gauche {
   display: flex;
   flex-direction: column;
-  background-color: red;
-  width: 25%;
-  align-items: center;
+  width: 40%;
+  text-align: start;
   justify-content: center;
 }
 
 .col-droite {
   display: flex;
   flex-direction: column;
-  background-color: blue;
   width: 25%;
   align-items: center;
   justify-content: center;
 }
 
 .col-milieu {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-  width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 60%;
+    margin-left: 100px;
 }
 .annonce {
   display: flex;
   align-items: center;
+  font-size: 19px;
 }
 
 .annonce span {
   padding: 15px;
 }
 .col-gauche span {
-  padding: 12px;
+  padding: 7px;
+  display:inline-block;
 }
 
 .col-droite span {
-  padding: 12px;
+  padding: 8px;
 }
 
 .join {
     padding: 1.3em 3em;
-    font-size: 12px;
+    font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
@@ -68,6 +71,8 @@
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
+    width: 90px;
+    margin-top: 15px;
   }
   
  .join:hover {
@@ -81,4 +86,34 @@
     transform: translateY(-1px);
   }
 
+  .info {
+      display: flex;
+      align-items: center;
+      width: 60%;
+      border-top: double;
+      margin-top: 20px;
+  }
 
+  .equipe {
+    font-size: 18px;
+    font-weight: bold;
+    border-top: double;
+  }
+
+
+  .demande {
+    font-size: 18px;
+    font-weight: bold;
+    border-top: double;
+  }
+
+  .language {
+    font-size: 18px;
+    font-weight: bold;
+    border-top: double;
+  }
+
+  .entreprise {
+    font-size: 18px;
+    font-weight: bold;
+  }

@@ -1,14 +1,6 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
-// import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-// import React, { useState } from "react";
-// import LoginMember from "./pages/LoginMember";
-// import Users from "./pages/Users";
-// import Logout from "./pages/Logout";
-// import EspaceMember from "./pages/EspaceMember";
-// import UserIdContext from "./components/UserIdContext";
-// import Body from "./pages/Body";
-// import "./App.css";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
+// import { useState } from "react";
+// import UserIdContext from "./components/UserIdContext";
 import Login from "./pages/Login";
 import ProjectInfo from "./pages/ProjectInfo";
 import AddProject from "./pages/AddProject";
@@ -29,4 +21,5 @@ function App() {
     </Router>
   );
 }
+
 export default App;
