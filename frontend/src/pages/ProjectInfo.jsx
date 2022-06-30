@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-unresolved
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import Header from "@components/Header";
+import Header from "../components/Header";
 import orange from "../assets/orange.png";
 import map from "../assets/map.png";
 import personne from "../assets/personne.png";
