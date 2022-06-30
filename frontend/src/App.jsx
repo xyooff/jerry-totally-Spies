@@ -1,6 +1,10 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
-import React, { useState } from "react";
+import {
+  Routes,
+  useState,
+  Route,
+  BrowserRouter as Router,
+} from "react-router-dom";
 import Login from "./pages/Login";
 import ProjectInfo from "./pages/ProjectInfo";
 import AddProject from "./pages/AddProject";

@@ -11,25 +11,7 @@ type SortKeys = keyof Data[0];
 
 type SortOrder = "ascn" | "desc";
 
-function ProjectsList() {
-
-const { projects, setProjects } = useContext(DataContext);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:5001/project/users")
-      .then((res) => res.data)
-      .then((data) => {
-        setProjects(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
-
-
-
-  function sortData({
+function sortData({
     tableData,
     sortKey,
     reverse,
@@ -40,7 +22,7 @@ const { projects, setProjects } = useContext(DataContext);
   }) {
     if (!sortKey) return tableData;
 
-    const sortedData = projects.sort((a, b) => {
+    const sortedData = tableData.sort((a, b) => {
       return a[sortKey] > b[sortKey] ? 1 : -1;
     });
 
@@ -57,7 +39,7 @@ const { projects, setProjects } = useContext(DataContext);
     sortKey,
     onClick,
   }: {
-    sortOrder: SortOrder;
+sortOrder: SortOrder;
     columnKey: SortKeys;
     sortKey: SortKeys;
     onClick: MouseEventHandler<HTMLButtonElement>;
@@ -75,6 +57,23 @@ const { projects, setProjects } = useContext(DataContext);
       </button>
     );
   }
+
+function ProjectsList() {
+
+const { projects, setProjects } = useContext(DataContext);
+
+    useEffect(() => {
+        axios
+        .get("http://localhost:5001/project/users")
+        .then((res) => res.data)
+        .then((data) => {
+            setProjects(data);
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+    }, []);
+
 
     const [sortKey, setSortKey] = useState<SortKeys>("agence");
     const [sortOrder, setSortOrder] = useState<SortOrder>("ascn");
@@ -105,13 +104,12 @@ const { projects, setProjects } = useContext(DataContext);
 
       setSortKey(key);
     }
-
-    return (
+return (
       <div className="list-page">
         <table className="bloc-table">
           <thead>
             <tr>
-            
+
               {headers.map((row) => {
                 return (
                   <td key={row.key}>
@@ -136,7 +134,7 @@ const { projects, setProjects } = useContext(DataContext);
             <th>DEADLINE</th>
             <th>DATE DE PUBLICATION</th>
             <th>AVANCEMENT</th> */}
-            
+
             </tr>
           </thead>
           <tbody>
