@@ -1,63 +1,156 @@
--- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
---
--- Client :  localhost
--- Généré le :  Jeu 26 Octobre 2017 à 13:53
--- Version du serveur :  5.7.19-0ubuntu0.16.04.1
--- Version de PHP :  7.0.22-0ubuntu0.16.04.1
+-- CREATE DATABASE  IF NOT EXISTS `totallyspies`;
+DROP DATABASE `totallyspies`;
+CREATE DATABASE  IF NOT EXISTS `totallyspies`;
+USE `totallyspies`;
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `firstname` varchar(255),
+  `lastname` varchar(255),
+  `email` varchar(255),
+  `password` varchar(255),
+  `agence_id` int
+)ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO
+  `user` (firstname, lastname, email, password, agence_id)
+VALUES
+  (
+    "Martin",
+    "Dupont",
+    "matin.dupont@gmail.com", 
+    "$argon2i$v=19$m=16,t=2,p=1$UGt5NHpXVzNlNDdwVHJRRA$04lEGSUPaMRQeOYECTrSYQ", 
+    1
+  ),
+  (
+    "Jean-claude",
+    "van damme",
+    "jean-claude-ven-damme@gamil.com", 
+    "$argon2i$v=19$m=16,t=2,p=1$UGt5NHpXVzNlNDdwVHJRRA$04lEGSUPaMRQeOYECTrSYQ", 
+    2
+  ),
+  (
+    "Leo",
+    "Durant",
+    "leo-durant@gamil.com", 
+    "$argon2i$v=19$m=16,t=2,p=1$UGt5NHpXVzNlNDdwVHJRRA$04lEGSUPaMRQeOYECTrSYQ", 
+    3
+  ),
+  (
+    "John",
+    "Smith",
+    "john.smith@gmail.com", 
+    "$argon2i$v=19$m=16,t=2,p=1$UGt5NHpXVzNlNDdwVHJRRA$04lEGSUPaMRQeOYECTrSYQ", 
+    4
+  );
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+DROP TABLE IF EXISTS `project`;
+CREATE TABLE `project` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `title` varchar(255),
+  `description` varchar(255),
+  `priorite` VARCHAR(255),
+  `deadline` VARCHAR(10),
+  `datePublish`VARCHAR(10),
+  `avancement` int,
+  `agences_id` int
+)ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO
+  `project` (title, description, priorite, deadline, datePublish, avancement, agences_id)
+  VALUES
+  (
+    "hackathon", 
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed ullamcorper eros. Mauris vestibulum commodo urna sed tincidunt. Nullam in consequat ligula.", 
+    "hight",
+    "10-10-2022",
+    "11-10-2022",
+    8,
+    1
+    ),
+  (
+    "hackathon2", 
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed ullamcorper eros. Mauris vestibulum commodo urna sed tincidunt. Nullam in consequat ligula.", 
+    "low",
+    "05-08-2022",
+    "06-08-2022",
+    6,
+    2
+    ),
+      (
+    "hackathon3", 
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed ullamcorper eros. Mauris vestibulum commodo urna sed tincidunt. Nullam in consequat ligula.", 
+    "hight",
+    "17-07-2022",
+    "18-07-2022",
+    4,
+    2
+    ),
+      (
+    "hackathon4", 
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed ullamcorper eros. Mauris vestibulum commodo urna sed tincidunt. Nullam in consequat ligula.", 
+    "low",
+    "25-12-2022",
+    "26-12-2022",
+    2,
+    1
+    );
 
---
--- Base de données :  `simple-mvc`
---
 
--- --------------------------------------------------------
+DROP TABLE IF EXISTS `agence`;
+CREATE TABLE `agence` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `city` VARCHAR(255)
+)ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Structure de la table `item`
---
+INSERT INTO
+  `agence` (city)
+VALUES
+  ("Nantes"),
+  ("Strasbourg"),
+  ("Lille"),
+  ("Lyon");
 
-CREATE TABLE `item` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `collaborators`;
+CREATE TABLE `collaborators` (
+  `project_id`int,
+  `user_id`int
+)ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO
+  `collaborators` (project_id, user_id)
+VALUES
+  (1, 1),
+  (2, 2),
+  (3, 3),
+  (4, 1);
 
---
--- Contenu de la table `item`
---
+DROP TABLE IF EXISTS `tech`;
+CREATE TABLE `tech` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `url` VARCHAR(255),
+  `project_id` int
+)ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO
+  `tech` (url, project_id)
+VALUES
+  ("https://img2.freepng.fr/20180604/pol/kisspng-react-javascript-angularjs-ionic-atom-5b154be6709500.6532453515281223424611.jpg", 
+  1
+  ),
+  ("https://img1.freepng.fr/20180502/fgw/kisspng-angularjs-single-page-application-web-application-angular-5aea7a2d8df230.6287313315253161415814.jpg", 
+  2
+  ),
+  ("https://img2.freepng.fr/20180619/jaw/kisspng-node-js-javascript-express-js-server-side-scriptin-node-js-5b28f613031dd3.1561918615294110910128.jpg", 
+  3
+  ),
+  ("https://img2.freepng.fr/20180422/qze/kisspng-php-server-side-scripting-computer-software-genera-php-5adc5e78de7813.0517335015243915449112.jpg", 
+  1
+  );
 
-INSERT INTO `item` (`id`, `title`) VALUES
-(1, 'Stuff'),
-(2, 'Doodads');
 
---
--- Index pour les tables exportées
---
+ALTER TABLE `user`ADD FOREIGN KEY (`agence_id`) REFERENCES `agence`(`id`);
 
---
--- Index pour la table `item`
---
-ALTER TABLE `item`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `collaborators` ADD FOREIGN KEY (`project_id`) REFERENCES `project` (`id`);
+ALTER TABLE `project` ADD FOREIGN KEY (`agences_id`) REFERENCES `agence` (`id`);
 
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `item`
---
-ALTER TABLE `item`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+ALTER TABLE `collaborators` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+ALTER TABLE `tech` ADD FOREIGN KEY (`project_id`) REFERENCES `agence` (`id`);
