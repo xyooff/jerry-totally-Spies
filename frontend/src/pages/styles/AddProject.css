@@ -7,7 +7,7 @@
 .form-addProject-label{
     display: flex;
     flex-direction: column;
-    margin: 5VW;
+    margin: 2VW;
 }
 .form-addProject-firstParty{
     display: flex;

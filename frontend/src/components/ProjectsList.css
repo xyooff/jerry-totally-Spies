@@ -29,8 +29,8 @@ td {
 }
 
 td {
-    font-family: var(--font-body);
-    text-align: center;
+  font-family: var(--font-body);
+  text-align: center;
 }
 
 tr:nth-child(even) {
