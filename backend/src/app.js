@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 
 const cors = require("cors");
-
+const UserRouter = require("./router/UserRouter");
 // let's create express app
 
 const app = express();
@@ -21,6 +21,9 @@ app.use(express.static(path.join(__dirname, "../public")));
 // load router
 
 const router = require("./router");
+
+// API routes User
+app.use(UserRouter);
 
 app.use(router);
 

@@ -1,14 +1,15 @@
-import Home from "@pages/Home";
-
+import ProjectsList from "./components/ProjectsList";
+import Body from "./pages/Body";
 import "./App.css";
+import React from "react";
+import Body from "./pages/Body";
 
 function App() {
   return (
     <div className="App">
-      <Home />
-      <p>coucou</p>
+      <ProjectsList />
+      <Body />
     </div>
   );
 }
-
 export default App;
