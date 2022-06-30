@@ -2,7 +2,6 @@
 /* eslint-disable import/no-unresolved */
 import axios from "axios";
 import { useState } from "react";
-import User from "@components/User";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
@@ -13,100 +12,106 @@ function Users() {
   const [surname, setSurname] = useState("");
   const [mail, setMail] = useState("");
   const [agence, setAgence] = useState("");
+  const [mdp, setMdp] = useState("");
+  const [verifMdp, setVerifMdp] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post(
-        `http://localhost:5000/users`,
-        {
-          firstname: name,
-          lastname: surname,
-          email: mail,
-          agenceId: agence,
-        },
-        {
-          withCredentials: true,
-        }
-      )
-      .then((res) => res.data)
-      .then(() => {
-        swal("Ajout de membre effectué").then(() => navigate("/ProjectsList"));
-      })
-      .catch((err) => {
-        console.warn(err);
-      });
+    if (mdp === verifMdp) {
+      axios
+        .post(
+          `http://localhost:5000/users`,
+          {
+            firstname: name,
+            lastname: surname,
+            email: mail,
+            password: mdp,
+            agence_id: agence,
+          },
+          {
+            withCredentials: true,
+          }
+        )
+        .then((res) => res.data)
+        .then(() => {
+          swal("Ajout de membre effectué").then(() => navigate("/"));
+        })
+        .catch((err) => {
+          console.warn(err);
+        });
+    } else {
+      swal(`le mot de pass n'est pas égal`);
+    }
   };
 
   return (
-    <>
-      <p>Users List</p>
-      <div style={{ display: "flex" }}>
-        {users.map((user) => (
-          <User
-            key={user.id}
-            firstname={user.firstname}
-            lastname={user.lastname}
-            email={user.email}
-            phoneNumber={user.phoneNumber}
-            address={user.address}
-            postalCode={user.postalCode}
-            city={user.city}
-            id={user.id}
+    <div>
+      <form
+        onSubmit={handleSubmit}
+        style={{ display: "flex", flexDirection: "column", width: "20%" }}
+      >
+        <label htmlFor="text">
+          <input
+            type="text"
+            placeholder="prénom"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
           />
-        ))}
-      </div>
-      <div>
-        <form
-          onSubmit={handleSubmit}
-          style={{ display: "flex", flexDirection: "column", width: "20%" }}
-        >
-          <label htmlFor="text">
-            <input
-              type="text"
-              placeholder="prénom"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
-          </label>
-          <label htmlFor="text">
-            <input
-              type="text"
-              placeholder="nom"
-              value={surname}
-              onChange={(e) => {
-                setSurname(e.target.value);
-              }}
-            />
-          </label>
-          <label htmlFor="text">
-            <input
-              type="text"
-              placeholder="email"
-              value={mail}
-              onChange={(e) => {
-                setMail(e.target.value);
-              }}
-            />
-          </label>
-          <label htmlFor="text">
-            <input
-              type="text"
-              placeholder="agence"
-              value={agence}
-              onChange={(e) => {
-                setAgence(e.target.value);
-              }}
-            />
-          </label>
-          <div style={{ display: "flex" }}>
-            <input type="submit" value="Créer membre" />
-          </div>
-        </form>
-      </div>
-    </>
+        </label>
+        <label htmlFor="text">
+          <input
+            type="text"
+            placeholder="nom"
+            value={surname}
+            onChange={(e) => {
+              setSurname(e.target.value);
+            }}
+          />
+        </label>
+        <label htmlFor="text">
+          <input
+            type="text"
+            placeholder="email"
+            value={mail}
+            onChange={(e) => {
+              setMail(e.target.value);
+            }}
+          />
+        </label>
+        <select onChange={(e) => setAgence(e.target.value)} name="agence">
+          <option value="">Agence :</option>
+          <option value="1">Nantes</option>
+          <option value="2">Strasbourg</option>
+          <option value="3">Lille</option>
+          <option value="4">Lyon</option>
+        </select>
+        <label htmlFor="text">
+          <input
+            type="password"
+            placeholder="password"
+            value={mdp}
+            onChange={(e) => {
+              setMdp(e.target.value);
+            }}
+          />
+        </label>
+        <label htmlFor="text">
+          <input
+            type="password"
+            placeholder="password"
+            value={verifMdp}
+            onChange={(e) => {
+              setVerifMdp(e.target.value);
+            }}
+          />
+        </label>
+        <div style={{ display: "flex" }}>
+          <input type="submit" value="Créer membre" />
+        </div>
+      </form>
+    </div>
   );
 }
 

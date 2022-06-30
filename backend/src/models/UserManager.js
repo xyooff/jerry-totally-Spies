@@ -26,13 +26,13 @@ class UserManager extends AbstractManager {
 
   findProject() {
     return this.connection.query(
-      `SELECT project.title, project.description, project.avancement FROM  ${UserManager.table}
+      `SELECT project.title, project.description, project.avancement, tech.url FROM  ${UserManager.table}
       INNER JOIN collaborators
       on user.id = collaborators.user_id
       INNER JOIN project
       on collaborators.project_id = project.id
-      INNER JOIN techno
-      on `
+      INNER JOIN tech
+      on project.id = tech.project_id`
     );
   }
 
