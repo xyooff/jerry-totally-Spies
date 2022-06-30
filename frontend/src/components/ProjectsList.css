@@ -29,7 +29,7 @@ td {
 }
 
 td {
-    font-family: var(--font-body);
+  font-family: var(--font-body);
 }
 
 tr:nth-child(even) {

@@ -6,7 +6,7 @@ import Login from "./pages/Login";
 import ProjetInfo from "./pages/ProjectInfo";
 import AddProject from "./pages/AddProject";
 import Home from "./pages/Home";
-import ProjectsList from "./components/ProjectsList";
+import ProjectsList from "./components/ProjectsList.tsx";
 
 function App() {
   const [userId, setUserId] = useState("");

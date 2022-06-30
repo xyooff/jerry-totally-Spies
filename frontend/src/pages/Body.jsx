@@ -3,7 +3,7 @@ import Login from "./Login";
 import ProjectInfo from "./ProjectInfo";
 import AddProject from "./AddProject";
 import Home from "./Home";
-import ProjectsList from "../components/ProjectsList";
+import ProjectsList from "../components/ProjectsList.tsx";
 
 export default function Body() {
   return (
