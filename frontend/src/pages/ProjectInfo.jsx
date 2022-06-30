@@ -1,6 +1,11 @@
 // eslint-disable-next-line import/no-unresolved
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import Header from "@components/Header";
 import orange from "../assets/orange.png";
+import map from "../assets/map.png";
+import personne from "../assets/personne.png";
+import time from "../assets/time.png";
 import "./styles/ProjectInfo.css";
 
 export default function ProjectInfo() {
@@ -9,25 +14,55 @@ export default function ProjectInfo() {
       <Header />
       <div className="col-container">
         <div className="col-gauche">
-          <span> Nom entreprise</span>
+          <ul className="wrapper">
+            <li className="icon github">
+              <span className="tooltip">Github</span>
+              <span>
+                <FontAwesomeIcon icon={faGithub} />
+              </span>
+            </li>
+          </ul>
+          <span className="entreprise">L'ntreprise:</span>
+          <span>Orange</span>
+          <span className="demande">Les postes:</span>
           <span> Developpeur front-end</span>
           <span> Product Owner </span>
           <span> UX/UI</span>
+          <span className="language">Language:</span>
           <span>JavaScript</span>
           <span>ReactJs</span>
           <span>mySQL</span>
+          <span className="equipe">L'équipe</span>
+          <span>Nathan </span>
+          <span>Lucie</span>
+          <button className="join" type="button">
+            Join
+          </button>
         </div>
 
         <div className="col-milieu">
           <img className="agence" width="30%" src={orange} alt="orange" />
-          <p className="entreprise">i want to DIIIEEE</p>
-          <div className="annonce">
-            <span>Priorité</span>
-            <span>3 personnes</span>
-            <span>Ville</span>
-            <span>Durée mission</span>
+          <hr />
+          <div className="like">
+            <input type="checkbox" />
+            <div className="hearth" />
           </div>
-          <p>
+          <div className="annonce">
+            <span>
+              <img className="personne" src={personne} alt="personne" />3
+              personnes
+            </span>
+            <span>
+              <img className="map" src={map} alt="map" />
+              Angers
+            </span>
+            <span>
+              <img className="time" src={time} alt="time" />4 mois
+            </span>
+          </div>
+          <p className="descriptif">Descriptif du poste</p>
+          <p className="info">
+            <hr />
             "At vero eos et accusamus et iusto odio dignissimos ducimus qui
             blanditiis praesentium voluptatum deleniti atque corrupti quos
             dolores et quas molestias excepturi sint occaecati cupiditate non
@@ -43,13 +78,7 @@ export default function ProjectInfo() {
             consequatur aut perferendis doloribus asperiores repellat."
           </p>
         </div>
-
-        <div className="col-droite">
-          <span>L'équipe</span>
-          <span>Nathan </span>
-          <span>Lucie</span>
-          <button type="button">Rejoindre</button>
-        </div>
+        <div className="col-droite" />
       </div>
     </>
   );
