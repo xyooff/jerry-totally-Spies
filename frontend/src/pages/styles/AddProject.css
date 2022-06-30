@@ -1,40 +1,37 @@
-.form-addProject{
-    display: grid;
-    justify-content: center;
-    align-items: center;
+.form-addProject {
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 
-.form-addProject-label{
-    display: flex;
-    flex-direction: column;
-    margin: 2VW;
+.form-addProject-label {
+  display: flex;
+  flex-direction: column;
+  margin: 2vw;
 }
-.form-addProject-firstParty{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
-
-.form-addProject-SecondParty{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left:50px ;
-}
-.from-input{
-    border-radius: 10px;
-    padding:6px;
-    margin-top:10px;
-}
-#from-button{
-    background-color: var(--primary-blue);
-    color: var(--primary-gray);  
-}
-.from-input-text{
-    width: 300px;
-    height: 150px;
+.form-addProject-firstParty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
+.form-addProject-SecondParty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+}
+.from-input {
+  border-radius: 10px;
+  padding: 6px;
+  margin-top: 10px;
+}
+#from-button {
+  background-color: var(--primary-blue);
+  color: var(--primary-gray);
+}
+.from-input-text {
+  width: 300px;
+  height: 150px;
+}
