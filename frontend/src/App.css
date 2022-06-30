@@ -1,27 +1,35 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Hind:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 :root {
   --primary-blue: #183650;
   --primary-orange: #e89759;
   --primary-gray: #f0f0f0;
   --primary-dark-gray: #464646;
-
   --secondary-black: #0a1e30;
   --secondary-orange: #e77620;
   --secondary-gray: #787878;
-
   --font-title: "Montserrat", sans-serif;
   --font-body: "Hind", sans-serif;
+  --size: 100px;
+  --frames: 62;
 }
 
 * {
   margin: O auto;
   box-sizing: border-box;
+  padding: 0;
+}
+
+*:focus,
+*:active {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  background-color: #f5f3ede2;
+  background-color: var(--primary-gray);
 }
 
 .App {

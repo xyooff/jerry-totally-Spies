@@ -3,7 +3,8 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 25px 25px 25px 25px;
-  background-color: aquamarine;
+  background-color: #e79759;
+  color: white;
 }
 
 .picto {

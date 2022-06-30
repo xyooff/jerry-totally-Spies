@@ -1,80 +1,23 @@
-import React from "react";
-import Header from "./Header";
+import React, { useState, useEffect } from "react";
 import "./ProjectsList.css";
+import axios from "axios";
+import Header from "./Header";
+import ProgressBar from "./ProgressBar";
 
 function ProjectsList() {
-  const tabItems = [
-    {
-      logo: "img",
-      agence: "NANTES",
-      name: "AIRBUS",
-      tech: "logo tech",
-      priority: "high",
-      deadline: "10/10/2022",
-      date: "01/07/2022",
-      state: "60%",
-    },
-    {
-      logo: "img",
-      agence: "NANTES",
-      name: "AIRBUS",
-      tech: "logo tech",
-      priority: "low",
-      deadline: "10/10/2022",
-      date: "01/07/2022",
-      state: "60%",
-    },
-    {
-      logo: "img",
-      agence: "NANTES",
-      name: "AIRBUS",
-      tech: "logo tech",
-      priority: "medium",
-      deadline: "10/10/2022",
-      date: "01/07/2022",
-      state: "60%",
-    },
-    {
-      logo: "img",
-      agence: "NANTES",
-      name: "AIRBUS",
-      tech: "logo tech",
-      priority: "high",
-      deadline: "10/10/2022",
-      date: "01/07/2022",
-      state: "60%",
-    },
-    {
-      logo: "img",
-      agence: "NANTES",
-      name: "AIRBUS",
-      tech: "logo tech",
-      priority: "high",
-      deadline: "10/10/2022",
-      date: "01/07/2022",
-      state: "60%",
-    },
-    {
-      logo: "img",
-      agence: "NANTES",
-      name: "AIRBUS",
-      tech: "logo tech",
-      priority: "high",
-      deadline: "10/10/2022",
-      date: "01/07/2022",
-      state: "60%",
-    },
-    {
-      logo: "img",
-      agence: "NANTES",
-      name: "AIRBUS",
-      tech: "logo tech",
-      priority: "high",
-      deadline: "10/10/2022",
-      date: "01/07/2022",
-      state: "60%",
-    },
-  ];
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/project/users")
+      .then((res) => res.data)
+      .then((data) => {
+        setProjects(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   return (
     <>
@@ -93,18 +36,23 @@ function ProjectsList() {
               <th>AVANCEMENT</th>
             </tr>
           </thead>
-          {tabItems.map((item) => {
+          {projects.map((item) => {
             return (
               <tbody>
                 <tr>
                   <td>{item.logo}</td>
-                  <td>{item.agence}</td>
-                  <td>{item.name}</td>
+                  <td>{item.city}</td>
+                  <td>{item.title}</td>
                   <td>{item.tech}</td>
-                  <td>{item.priority}</td>
+                  <td>{item.priorite}</td>
                   <td>{item.deadline}</td>
-                  <td>{item.date}</td>
-                  <td>{item.state}</td>
+                  <td>{item.datePublish}</td>
+                  <td>
+                    <ProgressBar
+                      bgcolor={item.bgcolor}
+                      completed={item.avancement}
+                    />
+                  </td>
                 </tr>
               </tbody>
             );
