@@ -12,6 +12,7 @@ app.use(
   cors({
     origin: process.env.FRONTEND_URL ?? "http://localhost:3000",
     optionsSuccessStatus: 200,
+    credentials: true,
   })
 );
 
@@ -26,6 +27,10 @@ const router = require("./router");
 app.use(UserRouter);
 
 app.use(router);
+
+const projectRouter = require("./router/ProjectRouter");
+
+app.use(projectRouter);
 
 // ready to export
 module.exports = app;

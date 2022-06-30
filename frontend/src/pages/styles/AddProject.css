@@ -1,0 +1,28 @@
+.form-addProject{
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+}
+
+.form-addProject-label{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40%;
+}
+.form-addProject-firstParty{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.form-addProject-SecondParty{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left:50px ;
+
+}

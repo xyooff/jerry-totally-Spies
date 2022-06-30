@@ -21,7 +21,7 @@
 }
 
 body {
-  background-color: #f5f3ede2;
+  background-color: var(--primary-gray);
 }
 
 .App {
