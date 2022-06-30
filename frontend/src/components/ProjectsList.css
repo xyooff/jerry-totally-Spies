@@ -17,6 +17,7 @@ table {
   background-color: #193650;
   color: #e6e7e8;
   font-size: 15px;
+  font-family: var(--font-title);
 }
 
 th,
@@ -25,6 +26,10 @@ td {
   padding: 10px 20px;
   font-size: 14px;
   height: 10vh;
+}
+
+td {
+    font-family: var(--font-body);
 }
 
 tr:nth-child(even) {
