@@ -19,7 +19,7 @@ class ProjectManager extends AbstractManager {
 
   findallinfos() {
     return this.connection.query(
-      `SELECT * FROM ${this.table} INNER JOIN agence ON ${this.table}.agences_id=agence.id INNER JOIN tech ON tech.project_id=${this.table}.id WHERE tech.project_id = project.id`
+      `SELECT * FROM project INNER JOIN agence ON agence.id = project.agences_id`
     );
   }
 

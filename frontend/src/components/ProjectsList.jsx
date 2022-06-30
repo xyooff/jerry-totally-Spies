@@ -1,113 +1,65 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./ProjectsList.css";
+import axios from "axios";
+import Header from "./Header";
+import ProgressBar from "./ProgressBar";
 
 function ProjectsList() {
-  const tabItems = [
-    {
-      logo: "img",
-      agence: "NANTES",
-      name: "AIRBUS",
-      tech: "logo tech",
-      priority: "high",
-      deadline: "10/10/2022",
-      date: "01/07/2022",
-      state: "60%",
-    },
-    {
-      logo: "img",
-      agence: "NANTES",
-      name: "AIRBUS",
-      tech: "logo tech",
-      priority: "low",
-      deadline: "10/10/2022",
-      date: "01/07/2022",
-      state: "60%",
-    },
-    {
-      logo: "img",
-      agence: "NANTES",
-      name: "AIRBUS",
-      tech: "logo tech",
-      priority: "medium",
-      deadline: "10/10/2022",
-      date: "01/07/2022",
-      state: "60%",
-    },
-    {
-      logo: "img",
-      agence: "NANTES",
-      name: "AIRBUS",
-      tech: "logo tech",
-      priority: "high",
-      deadline: "10/10/2022",
-      date: "01/07/2022",
-      state: "60%",
-    },
-    {
-      logo: "img",
-      agence: "NANTES",
-      name: "AIRBUS",
-      tech: "logo tech",
-      priority: "high",
-      deadline: "10/10/2022",
-      date: "01/07/2022",
-      state: "60%",
-    },
-    {
-      logo: "img",
-      agence: "NANTES",
-      name: "AIRBUS",
-      tech: "logo tech",
-      priority: "high",
-      deadline: "10/10/2022",
-      date: "01/07/2022",
-      state: "60%",
-    },
-    {
-      logo: "img",
-      agence: "NANTES",
-      name: "AIRBUS",
-      tech: "logo tech",
-      priority: "high",
-      deadline: "10/10/2022",
-      date: "01/07/2022",
-      state: "60%",
-    },
-  ];
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5001/project/users")
+      .then((res) => res.data)
+      .then((data) => {
+        setProjects(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   return (
-    <div className="list-page">
-      <table className="bloc-table">
-        <thead>
-          <tr>
-            <th>LOGO ENTREPRISE</th>
-            <th>AGENCE</th>
-            <th>NOM</th>
-            <th>TECHNO</th>
-            <th>PRIORITE</th>
-            <th>DEADLINE</th>
-            <th>DATE DE PUBLICATION</th>
-            <th>AVANCEMENT</th>
-          </tr>
-        </thead>
-        {tabItems.map((item) => {
-          return (
-            <tbody>
-              <tr>
-                <td>{item.logo}</td>
-                <td>{item.agence}</td>
-                <td>{item.name}</td>
-                <td>{item.tech}</td>
-                <td>{item.priority}</td>
-                <td>{item.deadline}</td>
-                <td>{item.date}</td>
-                <td>{item.state}</td>
-              </tr>
-            </tbody>
-          );
-        })}
-      </table>
-    </div>
+    <>
+      <Header />
+      <div className="list-page">
+        <table className="bloc-table">
+          <thead>
+            <tr>
+              <th>LOGO ENTREPRISE</th>
+              <th>AGENCE</th>
+              <th>NOM</th>
+              <th>TECHNO</th>
+              <th>PRIORITE</th>
+              <th>DEADLINE</th>
+              <th>DATE DE PUBLICATION</th>
+              <th>AVANCEMENT</th>
+            </tr>
+          </thead>
+          {projects.map((item) => {
+            return (
+              <tbody>
+                <tr>
+                  <td>{item.logo}</td>
+                  <td>{item.city}</td>
+                  <td>{item.title}</td>
+                  <td>{item.tech}</td>
+                  <td>{item.priorite}</td>
+                  <td>{item.deadline}</td>
+                  <td>{item.datePublish}</td>
+                  <td>
+                    <ProgressBar
+                      bgcolor={item.bgcolor}
+                      completed={item.avancement}
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            );
+          })}
+        </table>
+      </div>
+    </>
   );
 }
 

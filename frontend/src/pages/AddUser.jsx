@@ -20,7 +20,7 @@ function Users() {
     if (mdp === verifMdp) {
       axios
         .post(
-          `http://localhost:5000/users`,
+          `http://localhost:5001/users`,
           {
             firstname: name,
             lastname: surname,
