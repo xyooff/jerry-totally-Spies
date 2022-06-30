@@ -1,14 +1,33 @@
-import { useState, MouseEventHandler, useCallback } from "react";
+import { useState, MouseEventHandler, useCallback, useEffect, useContext } from "react";
+import axios from "axios";
 import "./ProjectsList.css";
-import tabItems from "../data";
+import DataContext from "./Datacontext";
+// import tabItems from "../data";
 import React from "react";
 
+type Data = Array<any>;
 
-  type Data = typeof tabItems;
+type SortKeys = keyof Data[0];
 
-  type SortKeys = keyof Data[0];
+type SortOrder = "ascn" | "desc";
 
-  type SortOrder = "ascn" | "desc";
+function ProjectsList() {
+
+const { projects, setProjects } = useContext(DataContext);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5001/project/users")
+      .then((res) => res.data)
+      .then((data) => {
+        setProjects(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
+
 
   function sortData({
     tableData,
@@ -21,7 +40,7 @@ import React from "react";
   }) {
     if (!sortKey) return tableData;
 
-    const sortedData = tabItems.sort((a, b) => {
+    const sortedData = projects.sort((a, b) => {
       return a[sortKey] > b[sortKey] ? 1 : -1;
     });
 
@@ -57,29 +76,28 @@ import React from "react";
     );
   }
 
-  function ProjectsList({ data }: { data: Data }) {
     const [sortKey, setSortKey] = useState<SortKeys>("agence");
     const [sortOrder, setSortOrder] = useState<SortOrder>("ascn");
 
     const headers: { key: SortKeys; label: string }[] = [
       { key: "logo", label: "logo" },
-      { key: "agence", label: "agence" },
-      { key: "name", label: "name" },
+      { key: "city", label: "agence" },
+      { key: "title", label: "name" },
       { key: "tech", label: "tech" },
-      { key: "priority", label: "priority" },
+      { key: "priorite", label: "priority" },
       { key: "deadline", label: "deadline" },
-      { key: "date", label: "date" },
-      { key: "state", label: "state" },
+      { key: "datePublish", label: "date" },
+      { key: "avancement", label: "state" },
     ];
 
     const sortedData = useCallback(
       () =>
         sortData({
-          tableData: data,
+          tableData: projects,
           sortKey,
           reverse: sortOrder === "desc",
         }),
-      [data, sortKey, sortOrder]
+      [projects, sortKey, sortOrder]
     );
 
     function changeSort(key: SortKeys) {
@@ -93,6 +111,7 @@ import React from "react";
         <table className="bloc-table">
           <thead>
             <tr>
+            
               {headers.map((row) => {
                 return (
                   <td key={row.key}>
@@ -117,6 +136,7 @@ import React from "react";
             <th>DEADLINE</th>
             <th>DATE DE PUBLICATION</th>
             <th>AVANCEMENT</th> */}
+            
             </tr>
           </thead>
           <tbody>
@@ -124,13 +144,13 @@ import React from "react";
             return (
                 <tr key={item.id}>
                   <td>{item.logo}</td>
-                  <td>{item.agence}</td>
-                  <td>{item.name}</td>
+                  <td>{item.city}</td>
+                  <td>{item.title}</td>
                   <td>{item.tech}</td>
-                  <td>{item.priority}</td>
+                  <td>{item.priorite}</td>
                   <td>{item.deadline}</td>
-                  <td>{item.date}</td>
-                  <td>{item.state}</td>
+                  <td>{item.datePublish}</td>
+                  <td>{item.avancement}</td>
                 </tr>
               );
             })}
@@ -139,5 +159,6 @@ import React from "react";
       </div>
     );
   }
+
 
 export default ProjectsList;
