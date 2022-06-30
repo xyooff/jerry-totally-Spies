@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable camelcase */
 /* eslint-disable import/no-unresolved */
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import User from "@components/User";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
@@ -13,17 +12,18 @@ function Users() {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [mail, setMail] = useState("");
-  const [agenceId, setAgenceId] = useState("");
+  const [agence, setAgence] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .post(
-        `${import.meta.env.VITE_BACKEND_URL}/admin/users`,
+        `http://localhost:5000/users`,
         {
           firstname: name,
           lastname: surname,
           email: mail,
-          agenceId,
+          agenceId: agence,
         },
         {
           withCredentials: true,
@@ -31,34 +31,13 @@ function Users() {
       )
       .then((res) => res.data)
       .then(() => {
-        swal("Ajout de membre effectué").then(() => window.location.reload());
+        swal("Ajout de membre effectué").then(() => navigate("/ProjectsList"));
       })
       .catch((err) => {
         console.warn(err);
       });
   };
 
-  useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/admin/users`, {
-        withCredentials: true,
-      })
-      .then((res) => res.data)
-      .then((data) => {
-        setUsers(data);
-      })
-      .catch((err) => {
-        if (err.response.status === 401) {
-          swal("Merci de vous authentifier").then(() =>
-            navigate("/loginMember")
-          );
-        }
-        if (err.response.status === 403) {
-          swal("You're not authorized").then(() => navigate("/loginMember"));
-        }
-        console.error(err);
-      });
-  }, []);
   return (
     <>
       <p>Users List</p>
@@ -109,6 +88,16 @@ function Users() {
               value={mail}
               onChange={(e) => {
                 setMail(e.target.value);
+              }}
+            />
+          </label>
+          <label htmlFor="text">
+            <input
+              type="text"
+              placeholder="agence"
+              value={agence}
+              onChange={(e) => {
+                setAgence(e.target.value);
               }}
             />
           </label>

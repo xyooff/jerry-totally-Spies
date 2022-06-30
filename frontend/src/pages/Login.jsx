@@ -40,6 +40,10 @@ export default function Login() {
     }
   };
 
+  function addUser() {
+    navigate("/adduser");
+  }
+
   return (
     <div className="login">
       <img className="logo-img" src={logo} alt="user" />
@@ -65,6 +69,9 @@ export default function Login() {
         <br />
         <input className="loginButton" type="submit" value="CONNEXION" />
       </form>
+      <button type="button" onClick={() => addUser()}>
+        S'enregistrer
+      </button>
     </div>
   );
 }
