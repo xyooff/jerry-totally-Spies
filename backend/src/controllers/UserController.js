@@ -17,19 +17,19 @@ class UserController {
       });
   };
 
-  // static show = (req, res) => {
-  //   const user = req.body;
-  //   user.id = parseInt(req.params.id, 10);
-  //   models.user
-  //     .findSeance(user)
-  //     .then(([rows]) => {
-  //       res.send(rows);
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //       res.sendStatus(500);
-  //     });
-  // };
+  static show = (req, res) => {
+    const user = req.body;
+    user.id = parseInt(req.params.id, 10);
+    models.user
+      .findProject()
+      .then(([rows]) => {
+        res.send(rows);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
 
   // fonction d'authentification + vérification du password
   static login = async (req, res) => {
@@ -45,13 +45,12 @@ class UserController {
         if (rows[0] == null) {
           res.status(403).send("Email ou mot de passe incorrect");
         } else {
-          const { id, password: hash, role } = rows[0];
+          const { id, password: hash } = rows[0];
 
           if (await argon2.verify(hash, password)) {
             const token = await jwt.sign(
               {
                 id,
-                role,
               },
               process.env.JWT_AUTH_SECRET,
               {
@@ -68,7 +67,6 @@ class UserController {
               .send({
                 id,
                 email,
-                role,
               });
           } else {
             res.status(401).send({
