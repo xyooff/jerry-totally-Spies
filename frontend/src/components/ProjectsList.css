@@ -1,5 +1,5 @@
 table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 .bloc-table {
@@ -12,31 +12,31 @@ table {
 }
 
 .bloc-table thead th {
-    position: sticky;
-    top: 0;
-    background-color: #193650;
-    color: #e6e7e8;
-    font-size: 15px;
+  position: sticky;
+  top: 0;
+  background-color: #193650;
+  color: #e6e7e8;
+  font-size: 15px;
 }
 
 th,
 td {
-    border-bottom: 1px solid #dddddd;
-    padding: 10px 20px;
-    font-size: 14px;
-    height: 10vh;
+  border-bottom: 1px solid #dddddd;
+  padding: 10px 20px;
+  font-size: 14px;
+  height: 10vh;
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+  background-color: #dddddd;
 }
 
 tr:nth-child(odd) {
-    background-color: #edeef1;
+  background-color: #edeef1;
 }
 
 tr:hover td {
-    color: #E79759;
-    cursor: pointer;
-    background-color: #ffffff;
+  color: #e79759;
+  cursor: pointer;
+  background-color: #ffffff;
 }
