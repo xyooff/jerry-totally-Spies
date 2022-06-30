@@ -24,18 +24,13 @@ class UserManager extends AbstractManager {
     );
   }
 
-  findSeance(user) {
+  findProject() {
     return this.connection.query(
-      `SELECT title_formula, seance_date, url_HD , url_SD, status FROM  ${UserManager.table}
-      INNER JOIN seance
-      on user.id = seance.user_id
-      INNER JOIN sessiongallery
-      on seance.id = sessiongallery.seance_id
-      INNER JOIN formula
-      on seance.formula_id = formula.id
-      WHERE user.id = ?
-      ORDER BY seance_date;`,
-      [user.id]
+      `SELECT project.title, project.description, project.avancement FROM  ${UserManager.table}
+      INNER JOIN collaborators
+      on user.id = collaborators.user_id
+      INNER JOIN project
+      on collaborators.project_id = project.id`
     );
   }
 
