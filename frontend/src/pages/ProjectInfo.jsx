@@ -48,7 +48,9 @@ export default function ProjectInfo() {
           <span>L'équipe</span>
           <span>Nathan </span>
           <span>Lucie</span>
-          <button type="button">Rejoindre</button>
+          <button className="join" type="button">
+            Join
+          </button>
         </div>
       </div>
     </>
