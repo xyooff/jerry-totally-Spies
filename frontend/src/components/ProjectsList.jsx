@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./ProjectsList.css";
 import axios from "axios";
 import Header from "./Header";
 import ProgressBar from "./ProgressBar";
+
+const testData = [{ bgcolor1: "#6a1b9a" }];
 
 function ProjectsList() {
   const [projects, setProjects] = useState([]);
@@ -39,19 +42,24 @@ function ProjectsList() {
           {projects.map((item) => {
             return (
               <tbody>
-                <tr>
+                <tr className="all-tables">
                   <td>{item.logo}</td>
                   <td>{item.city}</td>
-                  <td>{item.title}</td>
+                  <Link to="/projectinfo">
+                    {" "}
+                    <td>{item.title}</td>{" "}
+                  </Link>
                   <td>{item.tech}</td>
                   <td>{item.priorite}</td>
                   <td>{item.deadline}</td>
                   <td>{item.datePublish}</td>
                   <td>
-                    <ProgressBar
-                      bgcolor={item.bgcolor}
-                      completed={item.avancement}
-                    />
+                    {testData.map((el) => (
+                      <ProgressBar
+                        bgcolor={el.bgcolor1}
+                        completed={item.avancement}
+                      />
+                    ))}
                   </td>
                 </tr>
               </tbody>
