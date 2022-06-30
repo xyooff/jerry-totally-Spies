@@ -50,30 +50,50 @@ CREATE TABLE `project` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `title` varchar(255),
   `description` varchar(255),
-  `avancement` int
+  `priorite` VARCHAR(255),
+  `deadline` VARCHAR(10),
+  `datePublish`VARCHAR(10),
+  `avancement` int,
+  `agences_id` int
 )ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 INSERT INTO
-  `project` (title, description, avancement)
+  `project` (title, description, priorite, deadline, datePublish, avancement, agences_id)
   VALUES
   (
     "hackathon", 
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed ullamcorper eros. Mauris vestibulum commodo urna sed tincidunt. Nullam in consequat ligula.", 
-    8
+    "hight",
+    "10-10-2022",
+    "11-10-2022",
+    8,
+    1
     ),
   (
     "hackathon2", 
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed ullamcorper eros. Mauris vestibulum commodo urna sed tincidunt. Nullam in consequat ligula.", 
-    6
+    "low",
+    "05-08-2022",
+    "06-08-2022",
+    6,
+    2
     ),
       (
     "hackathon3", 
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed ullamcorper eros. Mauris vestibulum commodo urna sed tincidunt. Nullam in consequat ligula.", 
-    4
+    "hight",
+    "17-07-2022",
+    "18-07-2022",
+    4,
+    2
     ),
       (
     "hackathon4", 
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed ullamcorper eros. Mauris vestibulum commodo urna sed tincidunt. Nullam in consequat ligula.", 
-    2
+    "low",
+    "25-12-2022",
+    "26-12-2022",
+    2,
+    1
     );
 
 
@@ -108,10 +128,10 @@ DROP TABLE IF EXISTS `tech`;
 CREATE TABLE `tech` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `url` VARCHAR(255),
-  `post_id` int
+  `project_id` int
 )ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 INSERT INTO
-  `tech` (url, post_id)
+  `tech` (url, project_id)
 VALUES
   ("https://img2.freepng.fr/20180604/pol/kisspng-react-javascript-angularjs-ionic-atom-5b154be6709500.6532453515281223424611.jpg", 
   1
@@ -129,6 +149,8 @@ VALUES
 
 ALTER TABLE `user`ADD FOREIGN KEY (`agence_id`) REFERENCES `agence`(`id`);
 
-ALTER TABLE `collaborators` ADD FOREIGN KEY (`project_id`) REFERENCES `project` (`id`);
+-- ALTER TABLE `collaborators` ADD FOREIGN KEY (`project_id`) REFERENCES `project` (`id`);
+ALTER TABLE `project` ADD FOREIGN KEY (`agences_id`) REFERENCES `agence` (`id`);
 
 ALTER TABLE `collaborators` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+ALTER TABLE `tech` ADD FOREIGN KEY (`project_id`) REFERENCES `agence` (`id`);
