@@ -1,5 +1,6 @@
 // import React, { useState } from "react";
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./styles/Login.css";
 import user from "../assets/user.png";
 import logo from "../assets/logo.png";
@@ -31,10 +32,11 @@ export default function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-
-        <button className="loginButton" type="submit">
-          Sign In
-        </button>
+        <NavLink to="/Home">
+          <button className="loginButton" type="submit">
+            Sign In
+          </button>
+        </NavLink>
       </form>
     </div>
   );
