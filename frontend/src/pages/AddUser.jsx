@@ -4,6 +4,8 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import "./styles/adduser.css";
+import logo from "../assets/logo.png";
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -40,16 +42,14 @@ function Users() {
           console.warn(err);
         });
     } else {
-      swal(`le mot de pass n'est pas égal`);
+      swal(`le mot de pass n'est identique`);
     }
   };
 
   return (
-    <div>
-      <form
-        onSubmit={handleSubmit}
-        style={{ display: "flex", flexDirection: "column", width: "20%" }}
-      >
+    <div className="logo">
+      <img className="logo-img" src={logo} alt="user" />
+      <form className="formulaireUser" onSubmit={handleSubmit}>
         <label htmlFor="text">
           <input
             type="text"
@@ -107,8 +107,12 @@ function Users() {
             }}
           />
         </label>
-        <div style={{ display: "flex" }}>
-          <input type="submit" value="Créer membre" />
+        <div>
+          <input
+            className="registerButton"
+            type="submit"
+            value="Créer membre"
+          />
         </div>
       </form>
     </div>
