@@ -2,6 +2,7 @@ import { useState, MouseEventHandler, useCallback, useEffect, useContext } from 
 import axios from "axios";
 import "./ProjectsList.css";
 import DataContext from "./Datacontext";
+import Header from "./Header";
 // import tabItems from "../data";
 import React from "react";
 
@@ -64,7 +65,7 @@ const { projects, setProjects } = useContext(DataContext);
 
     useEffect(() => {
         axios
-        .get("http://localhost:5001/project/users")
+        .get("http://localhost:5002/project/users")
         .then((res) => res.data)
         .then((data) => {
             setProjects(data);
@@ -144,7 +145,7 @@ return (
                   <td>{item.logo}</td>
                   <td>{item.city}</td>
                   <td>{item.title}</td>
-                  <td>{item.tech}</td>
+                  <td><img className="url" src={item.url} /></td>
                   <td>{item.priorite}</td>
                   <td>{item.deadline}</td>
                   <td>{item.datePublish}</td>
