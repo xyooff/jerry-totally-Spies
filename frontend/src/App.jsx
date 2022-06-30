@@ -1,10 +1,6 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import {
-  Routes,
-  useState,
-  Route,
-  BrowserRouter as Router,
-} from "react-router-dom";
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
+import { useState } from "react";
 import Login from "./pages/Login";
 import ProjectInfo from "./pages/ProjectInfo";
 import AddProject from "./pages/AddProject";
@@ -19,7 +15,6 @@ function App() {
   const [userId, setUserId] = useState("");
   const [projects, setProjects] = useState([]);
   return (
-    // eslint-disable-next-line react/jsx-no-comment-textnodes
     <Router>
       <UserIdContext.Provider value={{ userId, setUserId }}>
         <Datacontext.Provider value={{ projects, setProjects }}>
