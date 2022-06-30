@@ -17,7 +17,7 @@ class ProjectManager extends AbstractManager {
     );
   }
 
-  findallinfos(id) {
+  findallinfos() {
     return this.connection.query(
       `SELECT agence_id, collaborators.project_id as colProId, user_id, title, description, priorite, deadline, datePublish, avancement, agences_id, city, url, tech.id as idDelaTech FROM user
       INNER JOIN collaborators
@@ -26,8 +26,7 @@ class ProjectManager extends AbstractManager {
       on collaborators.project_id = project.id
       INNER JOIN agence ON agence.id = project.agences_id 
       INNER JOIN tech
-      on project.id = tech.project_id
-      where tech.project_id = ${id}`
+      on project.id = tech.project_id`
     );
   }
 

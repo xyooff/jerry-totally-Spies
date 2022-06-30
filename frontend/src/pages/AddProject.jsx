@@ -6,11 +6,13 @@ import swal from "sweetalert";
 function AddProject() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [city, setCity] = useState("");
   const [priorite, setPriorite] = useState("");
   const [deadline, setDeadline] = useState("");
   const [avancement, setAvancement] = useState("");
   const [datePublish, setDatePublish] = useState("");
   const [techno, setTechno] = useState("");
+  const [company, setCompany] = useState("");
 
   const date = new Date();
 
@@ -22,11 +24,12 @@ function AddProject() {
     swal("hello");
     axios
       .post(
-        `${import.meta.env.VITE_BACKEND_URL}/project`,
+        `VITE_BACKEND_URL=http://localhost:5002/project`,
         {
           title,
           description,
           priorite,
+          company,
           deadline,
           datePublish,
           avancement,
@@ -40,61 +43,69 @@ function AddProject() {
       .catch((err) => {
         console.warn(err.response.data.error);
       });
-
-    swal("hello");
+    swal(
+      `${title}/${description}/${priorite}/${deadline}/${datePublish}/${avancement}/${techno}`
+    );
   };
-  const handlechange = (e) => setTechno(e.target.value);
+  const handlechange = (e) => setTechno(e);
+  const handleSelectCompany = (e) => setCompany(e.target.value);
   return (
     <form className="form-addProject">
       <div className="form-addProject-firstParty">
         <label className="form-addProject-label" htmlFor="text">
           LOGO ENTREPRISE
-          <select>
-            <option>generali</option>
-            <option>ina</option>
-            <option>orange</option>
-            <option>peugeot</option>
-            <option>renault</option>
-            <option>sanofi</option>
-            <option>sncf</option>
-            <option>societe general</option>
-            <option>thales</option>
-            <option>valeo</option>
-            <option>airbus</option>
-            <option>airfrance</option>
-            <option>arianeGroup</option>
-            <option>barclays</option>
-            <option>bnp paribas</option>
-            <option>continantal</option>
-            <option>credit mutuel</option>
-            <option>harmoni mutuel</option>
-            <option>mgen</option>
-            <option>groupe bpce</option>
+          <select className="from-input" onChange={handleSelectCompany}>
+            <option value="1">generali</option>
+            <option value="2">ina</option>
+            <option value="3">orange</option>
+            <option value="4">peugeot</option>
+            <option value="5">renault</option>
+            <option value="6">sanofi</option>
+            <option value="7">sncf</option>
+            <option value="8">societe general</option>
+            <option value="9">thales</option>
+            <option value="10">valeo</option>
+            <option value="11">airbus</option>
+            <option value="12">airfrance</option>
+            <option value="13">arianeGroup</option>
+            <option value="14">barclays</option>
+            <option value="15">bnp paribas</option>
+            <option value="16">continantal</option>
+            <option value="17">credit mutuel</option>
+            <option value="18">harmoni mutuel</option>
+            <option value="19">mgen</option>
+            <option value="20">groupe bpce</option>
           </select>
         </label>
-        <label className="form-addProject-label" htmlFor="city">
+        <label className="form-addProject-label" htmlFor="text">
           AGENCE
           <input
+            className="from-input"
             type="text"
-            value=""
+            value={city}
             name="city"
-            placehorder="nantes"
-            onChange={(e) => setDescription(e.target.value)}
+            placeholder="nantes"
+            onChange={(e) => setCity(e.target.value)}
           />
         </label>
         <label className="form-addProject-label" htmlFor="text">
           NOM
           <input
+            className="from-input"
             type="text"
             value={title}
             name="title"
-            placehorder="tesla"
+            placehorder={title}
             onChange={(e) => setTitle(e.target.value)}
           />
         </label>
         <label className="form-addProject-label" htmlFor="text">
           TECHNO
-          <select multiple onChange={() => handlechange()}>
+          <select
+            className="from-input"
+            multiple="multiple"
+            onChange={() => handlechange()}
+          >
             <option value="1">react</option>
             <option value="2">node.js</option>
             <option value="3">ruby</option>
@@ -117,9 +128,10 @@ function AddProject() {
         <label className="form-addProject-label" htmlFor="text">
           PRIORITE
           <input
+            className="from-input"
             type="text"
-            value="priority"
-            name={priorite}
+            value={priorite}
+            name="priority"
             placehorder="hight"
             onChange={(e) => setPriorite(e.target.value)}
           />
@@ -127,6 +139,7 @@ function AddProject() {
         <label className="form-addProject-label" htmlFor="date">
           DEADLINE
           <input
+            className="from-input"
             type="date"
             value={deadline}
             name="date"
@@ -134,13 +147,10 @@ function AddProject() {
             onChange={(e) => setDeadline(e.target.value)}
           />
         </label>
-        <label className="form-addProject-label" htmlFor="date">
-          DATE DE PUBLICATION
-          <input type="date" value="" name="DatePublish" placehorder="" />
-        </label>
         <label className="form-addProject-label" htmlFor="number">
           AVANCEMENT
           <input
+            className="from-input"
             type="number"
             value={avancement}
             name="advance"
@@ -148,10 +158,25 @@ function AddProject() {
             onChange={(e) => setAvancement(e.target.value)}
           />
         </label>
+        <label className="form-addProject-label" htmlFor="text">
+          Description
+          <textarea
+            className="from-input-text"
+            type="text-area"
+            value={description}
+            name="advance"
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </label>
+        <button
+          id="from-button"
+          className="from-input"
+          type="submit"
+          onClick={handleClick}
+        >
+          Add project
+        </button>
       </div>
-      <button type="submit" onClick={handleClick}>
-        Add project
-      </button>
     </form>
   );
 }

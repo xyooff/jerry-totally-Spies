@@ -15,7 +15,7 @@ class PhotoController {
 
   static show = (req, res) => {
     models.project
-      .findallinfos(req.params.id)
+      .findallinfos()
       .then(([rows]) => {
         res.send(rows);
       })

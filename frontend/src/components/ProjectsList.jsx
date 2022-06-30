@@ -9,7 +9,7 @@ function ProjectsList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5001/project/users")
+      .get("http://localhost:5002/project/users")
       .then((res) => res.data)
       .then((data) => {
         setProjects(data);
@@ -43,7 +43,10 @@ function ProjectsList() {
                   <td>{item.logo}</td>
                   <td>{item.city}</td>
                   <td>{item.title}</td>
-                  <td>{item.tech}</td>
+                  <td>
+                    {" "}
+                    <img className="pictureTable" src={item.url} alt="" />
+                  </td>
                   <td>{item.priorite}</td>
                   <td>{item.deadline}</td>
                   <td>{item.datePublish}</td>
