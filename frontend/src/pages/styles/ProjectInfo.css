@@ -1,0 +1,59 @@
+.agence {
+  /* display: flex;
+  justify-content: center; */
+  margin-top: 60px;
+}
+
+.entreprise {
+  display: flex;
+  justify-content: center;
+}
+
+.col-container {
+  display: flex;
+}
+
+.col-gauche {
+  display: flex;
+  flex-direction: column;
+  background-color: red;
+  width: 25%;
+  align-items: center;
+  justify-content: center;
+}
+
+.col-droite {
+  display: flex;
+  flex-direction: column;
+  background-color: blue;
+  width: 25%;
+  align-items: center;
+  justify-content: center;
+}
+
+.col-milieu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  width: 50%;
+}
+.annonce {
+  display: flex;
+  align-items: center;
+}
+
+.annonce span {
+  padding: 15px;
+}
+.col-gauche span {
+  padding: 12px;
+}
+
+.col-droite span {
+  padding: 12px;
+}
+
+.button {
+  width: 10px;
+}
