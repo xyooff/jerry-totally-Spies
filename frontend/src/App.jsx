@@ -9,9 +9,7 @@ import ProjectsList from "./components/ProjectsList";
 import AddUser from "./pages/AddUser";
 
 function App() {
-  // const [userId, setUserId] = useState("");
   return (
-    // eslint-disable-next-line react/jsx-no-comment-textnodes
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
