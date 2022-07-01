@@ -4,6 +4,7 @@ import "./ProjectsList.css";
 import { Link } from "react-router-dom";
 import DataContext from "./Datacontext";
 import ProgressBar from "./ProgressBar";
+import Header from "./Header";
 // import tabItems from "../data";
 import React from "react";
 
@@ -68,7 +69,7 @@ const { projects, setProjects } = useContext(DataContext);
 
     useEffect(() => {
         axios
-        .get("http://localhost:5001/project/users")
+        .get("http://localhost:5002/project/users")
         .then((res) => res.data)
         .then((data) => {
             setProjects(data);
@@ -149,6 +150,7 @@ return (
                   <td>{item.title}</td>
                   </Link>
                   <td>{item.tech}</td>
+                  <td><img className="url" src={item.url} /></td>
                   <td>{item.priorite}</td>
                   <td>{item.deadline}</td>
                   <td>{item.datePublish}</td>

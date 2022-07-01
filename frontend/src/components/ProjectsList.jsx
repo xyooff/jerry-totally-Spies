@@ -50,6 +50,10 @@ function ProjectsList() {
                     <td>{item.title}</td>{" "}
                   </Link>
                   <td>{item.tech}</td>
+                  <td>
+                    {" "}
+                    <img className="pictureTable" src={item.url} alt="" />
+                  </td>
                   <td>{item.priorite}</td>
                   <td>{item.deadline}</td>
                   <td>{item.datePublish}</td>

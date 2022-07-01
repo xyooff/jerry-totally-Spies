@@ -18,6 +18,18 @@ CREATE TABLE
         `agence_id` int
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
+DROP TABLE IF EXISTS `project`;
+CREATE TABLE `project` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `title` varchar(255),
+  `description` varchar(255),
+  `priorite` VARCHAR(255),
+  `deadline` VARCHAR(10),
+  `datePublish`VARCHAR(10),
+  `avancement` int DEFAULT 0,
+  `agences_id` int
+)ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 INSERT INTO
     `user` (
         firstname,
@@ -121,6 +133,19 @@ CREATE TABLE
 INSERT INTO `agence` (city)
 VALUES ("Nantes"), ("Strasbourg"), ("Lille"), ("Lyon");
 
+DROP TABLE IF EXISTS `technoProject`;
+CREATE TABLE `technoProject` (
+  `techno_id` int,
+  `projects_id` int
+)ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO
+  `technoProject` (techno_id, projects_id)
+VALUES
+  (1,1),
+  (2,1),
+  (4,2),
+  (3,2);
 DROP TABLE IF EXISTS `collaborators`;
 
 CREATE TABLE
@@ -161,6 +186,7 @@ ADD
 
 -- ALTER TABLE `collaborators` ADD FOREIGN KEY (`project_id`) REFERENCES `project` (`id`);
 
+
 ALTER TABLE `project`
 ADD
     FOREIGN KEY (`agences_id`) REFERENCES `agence` (`id`);
@@ -172,3 +198,9 @@ ADD
 ALTER TABLE `tech`
 ADD
     FOREIGN KEY (`project_id`) REFERENCES `agence` (`id`);
+
+ALTER TABLE `collaborators` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+ALTER TABLE `tech` ADD FOREIGN KEY (`project_id`) REFERENCES `agence` (`id`);
+ALTER TABLE `technoProject` ADD FOREIGN KEY (`techno_id`) REFERENCES `tech` (`id`);
+ALTER TABLE `technoProject` ADD FOREIGN KEY (`projects_id`) REFERENCES `project` (`id`);
+
