@@ -26,7 +26,7 @@ function App() {
             <Route path="/projectslist" element={<ProjectsList />} />
             <Route path="/home" element={<Home />} />
             <Route path="/add-project" element={<AddProject />} />
-            <Route path="/users/:id" element={<ProfilUser />} />
+            <Route path="/profiluser" element={<ProfilUser />} />
           </Routes>
         </Datacontext.Provider>
       </UserIdContext.Provider>

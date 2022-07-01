@@ -15,7 +15,7 @@ function Header() {
         <Link to="/add-project">
           <img src={add} alt="add" />
         </Link>
-        <Link to="/profilUser">
+        <Link to="/profiluser">
           <img src={profil} alt="profil" />
         </Link>
       </div>
