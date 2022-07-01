@@ -1,10 +1,14 @@
 import { useState, MouseEventHandler, useCallback, useEffect, useContext } from "react";
 import axios from "axios";
 import "./ProjectsList.css";
+import { Link } from "react-router-dom";
 import DataContext from "./Datacontext";
+import ProgressBar from "./ProgressBar";
 import Header from "./Header";
 // import tabItems from "../data";
 import React from "react";
+
+const testData = [{ bgcolor1: "#193650" }];
 
 type Data = Array<any>;
 
@@ -80,14 +84,13 @@ const { projects, setProjects } = useContext(DataContext);
     const [sortOrder, setSortOrder] = useState<SortOrder>("ascn");
 
     const headers: { key: SortKeys; label: string }[] = [
-      { key: "logo", label: "logo" },
-      { key: "city", label: "agence" },
-      { key: "title", label: "name" },
-      { key: "tech", label: "tech" },
-      { key: "priorite", label: "priority" },
-      { key: "deadline", label: "deadline" },
-      { key: "datePublish", label: "date" },
-      { key: "avancement", label: "state" },
+      { key: "city", label: "Agence" },
+      { key: "title", label: "Nom" },
+      { key: "tech", label: "Tech" },
+      { key: "priorite", label: "Priorité" },
+      { key: "deadline", label: "Deadline" },
+      { key: "datePublish", label: "Date" },
+      { key: "avancement", label: "Etat" },
     ];
 
     const sortedData = useCallback(
@@ -142,14 +145,21 @@ return (
             {sortedData().map((item) => {
             return (
                 <tr key={item.id}>
-                  <td>{item.logo}</td>
                   <td>{item.city}</td>
+                  <Link to="/projectinfo">
                   <td>{item.title}</td>
+                  </Link>
+                  <td>{item.tech}</td>
                   <td><img className="url" src={item.url} /></td>
                   <td>{item.priorite}</td>
                   <td>{item.deadline}</td>
                   <td>{item.datePublish}</td>
-                  <td>{item.avancement}</td>
+                  <td> {testData.map((el) => (
+                      <ProgressBar
+                        bgcolor={el.bgcolor1}
+                        completed={item.avancement}
+                      />
+                    ))}</td>
                 </tr>
               );
             })}
