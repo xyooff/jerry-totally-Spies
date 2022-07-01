@@ -24,7 +24,7 @@ function AddProject() {
     swal("hello");
     axios
       .post(
-        `VITE_BACKEND_URL=http://localhost:5002/project`,
+        `VITE_BACKEND_URL=http://localhost:5000/project`,
         {
           title,
           description,

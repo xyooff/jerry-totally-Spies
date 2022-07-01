@@ -1,16 +1,18 @@
 // import React, { useState } from "react";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles/Login.css";
 import axios from "axios";
 import swal from "sweetalert";
 import user from "../assets/user.png";
 import logo from "../assets/logo.png";
+import UserIdContext from "../components/UserIdContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { setUserId } = useContext(UserIdContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,6 +28,7 @@ export default function Login() {
             withCredentials: true,
           }
         )
+        .then((res) => setUserId(res.data.id))
         .then(() => {
           navigate("/ProjectsList");
         })

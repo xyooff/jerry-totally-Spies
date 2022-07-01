@@ -24,6 +24,13 @@ class UserManager extends AbstractManager {
     );
   }
 
+  findById(id) {
+    return this.connection.query(
+      `select * from ${UserManager.table} where id = ?`,
+      [id]
+    );
+  }
+
   findProject() {
     return this.connection.query(
       `SELECT project.title, project.description, project.avancement, tech.url FROM  ${UserManager.table}

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import add from "../assets/add.png";
 import profil from "../assets/profil.png";
-import search from "../assets/search.png";
 
 function Header() {
   return (
@@ -16,8 +15,9 @@ function Header() {
         <Link to="/add-project">
           <img src={add} alt="add" />
         </Link>
-        <img src={profil} alt="profil" />
-        <img src={search} alt="search" />
+        <Link to="/profilUser">
+          <img src={profil} alt="profil" />
+        </Link>
       </div>
     </header>
   );

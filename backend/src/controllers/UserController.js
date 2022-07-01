@@ -21,7 +21,7 @@ class UserController {
     const user = req.body;
     user.id = parseInt(req.params.id, 10);
     models.user
-      .findProject()
+      .findById(user.id)
       .then(([rows]) => {
         res.send(rows);
       })

@@ -84,7 +84,7 @@ function ProjectsList() {
   const [sortOrder, setSortOrder] = useState<SortOrder>("ascn");
   useEffect(() => {
     axios
-      .get("http://localhost:5002/project/users")
+      .get("http://localhost:5000/project/users")
       .then((res) => res.data)
       .then((data) => {
         setProjects(data);
@@ -121,56 +121,59 @@ function ProjectsList() {
     setSortKey(key);
   }
   return (
-    <div className="list-page">
-      <table className="bloc-table">
-        <thead>
-          <tr>
-            {headers.map((row) => {
+    <>
+      <Header />
+      <div className="list-page">
+        <table className="bloc-table">
+          <thead>
+            <tr>
+              {headers.map((row) => {
+                return (
+                  <td key={row.key}>
+                    {row.label}{" "}
+                    <SortButton
+                      columnKey={row.key}
+                      onClick={() => changeSort(row.key)}
+                      {...{
+                        sortOrder,
+                        sortKey,
+                      }}
+                    />
+                  </td>
+                );
+              })}
+              {/* <th>LOGO ENTREPRISE</th>
+    <th>AGENCE
+    </th>
+    <th>NOM</th>
+    <th>TECHNO</th>
+    <th>PRIORITE</th>
+    <th>DEADLINE</th>
+    <th>DATE DE PUBLICATION</th>
+    <th>AVANCEMENT</th> */}
+            </tr>
+          </thead>
+          <tbody>
+            {sortedData().map((item) => {
               return (
-                <td key={row.key}>
-                  {row.label}{" "}
-                  <SortButton
-                    columnKey={row.key}
-                    onClick={() => changeSort(row.key)}
-                    {...{
-                      sortOrder,
-                      sortKey,
-                    }}
-                  />
-                </td>
+                <tr key={item.id}>
+                  <td>{item.logo}</td>
+                  <td>{item.city}</td>
+                  <td>{item.title}</td>
+                  <td>
+                    <img className="url" src={item.url} />
+                  </td>
+                  <td>{item.priorite}</td>
+                  <td>{item.deadline}</td>
+                  <td>{item.datePublish}</td>
+                  <td>{item.avancement}</td>
+                </tr>
               );
             })}
-            {/* <th>LOGO ENTREPRISE</th>
-            <th>AGENCE
-            </th>
-            <th>NOM</th>
-            <th>TECHNO</th>
-            <th>PRIORITE</th>
-            <th>DEADLINE</th>
-            <th>DATE DE PUBLICATION</th>
-            <th>AVANCEMENT</th> */}
-          </tr>
-        </thead>
-        <tbody>
-          {sortedData().map((item) => {
-            return (
-              <tr key={item.id}>
-                <td>{item.logo}</td>
-                <td>{item.city}</td>
-                <td>{item.title}</td>
-                <td>
-                  <img className="url" src={item.url} />
-                </td>
-                <td>{item.priorite}</td>
-                <td>{item.deadline}</td>
-                <td>{item.datePublish}</td>
-                <td>{item.avancement}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
 

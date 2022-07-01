@@ -3,6 +3,7 @@ import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import { useState } from "react";
 import Login from "./pages/Login";
 import ProjectInfo from "./pages/ProjectInfo";
+import ProfilUser from "./pages/ProfilUser";
 import AddProject from "./pages/AddProject";
 import Home from "./pages/Home";
 import ProjectsList from "./components/ProjectsList.tsx";
@@ -25,6 +26,7 @@ function App() {
             <Route path="/projectslist" element={<ProjectsList />} />
             <Route path="/home" element={<Home />} />
             <Route path="/add-project" element={<AddProject />} />
+            <Route path="/profilUser" element={<ProfilUser />} />
           </Routes>
         </Datacontext.Provider>
       </UserIdContext.Provider>
