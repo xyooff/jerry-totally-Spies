@@ -53,7 +53,7 @@ CREATE TABLE `project` (
   `priorite` VARCHAR(255),
   `deadline` VARCHAR(10),
   `datePublish`VARCHAR(10),
-  `avancement` int,
+  `avancement` int DEFAULT 0,
   `agences_id` int
 )ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 INSERT INTO
