@@ -46,3 +46,13 @@ tr:hover td {
   cursor: pointer;
   background-color: #ffffff;
 }
+
+.pictureTable {
+  width: 30px;
+  height: 30px;
+}
+
+.url{
+  width: 30px;
+  height: 30px;
+}

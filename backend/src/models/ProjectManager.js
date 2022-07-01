@@ -19,10 +19,19 @@ class ProjectManager extends AbstractManager {
 
   findallinfos() {
     return this.connection.query(
-      `SELECT * FROM project INNER JOIN agence ON agence.id = project.agences_id`
+      `SELECT agence_id, collaborators.project_id as colProId, user_id, title, description, priorite, deadline, datePublish, avancement, agences_id, city, url, tech.id as idDelaTech FROM user
+      INNER JOIN collaborators
+      on user.id = collaborators.user_id
+      INNER JOIN project
+      on collaborators.project_id = project.id
+      INNER JOIN agence ON agence.id = project.agences_id 
+      INNER JOIN tech
+      on project.id = tech.project_id`
     );
   }
 
+  //  affiche les projet + la ville
+  // `SELECT * FROM project INNER JOIN agence ON agence.id = project.agences_id`
   update(item) {
     return this.connection.query(
       `update ${ProjectManager.table} set title = ? where id = ?`,
