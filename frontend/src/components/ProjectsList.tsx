@@ -82,17 +82,17 @@ function ProjectsList() {
 
   const [sortKey, setSortKey] = useState<SortKeys>("agence");
   const [sortOrder, setSortOrder] = useState<SortOrder>("ascn");
-    useEffect(() => {
-        axios
-        .get("http://localhost:5002/project/users")
-        .then((res) => res.data)
-        .then((data) => {
-            setProjects(data);
-        })
-        .catch((err) => {
-            console.error(err);
-        });
-    }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:5002/project/users")
+      .then((res) => res.data)
+      .then((data) => {
+        setProjects(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   const headers: { key: SortKeys; label: string }[] = [
     { key: "logo", label: "logo" },
@@ -154,22 +154,24 @@ function ProjectsList() {
         <tbody>
           {sortedData().map((item) => {
             return (
-                <tr key={item.id}>
-                  <td>{item.logo}</td>
-                  <td>{item.city}</td>
-                  <td>{item.title}</td>
-                  <td><img className="url" src={item.url} /></td>
-                  <td>{item.priorite}</td>
-                  <td>{item.deadline}</td>
-                  <td>{item.datePublish}</td>
-                  <td>{item.avancement}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    );
-  }
+              <tr key={item.id}>
+                <td>{item.logo}</td>
+                <td>{item.city}</td>
+                <td>{item.title}</td>
+                <td>
+                  <img className="url" src={item.url} />
+                </td>
+                <td>{item.priorite}</td>
+                <td>{item.deadline}</td>
+                <td>{item.datePublish}</td>
+                <td>{item.avancement}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
 export default ProjectsList;
