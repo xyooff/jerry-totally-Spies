@@ -11,8 +11,8 @@ function AddProject() {
   const [deadline, setDeadline] = useState("");
   const [avancement, setAvancement] = useState("");
   const [datePublish, setDatePublish] = useState("");
-  const [techno, setTechno] = useState("");
   const [company, setCompany] = useState("");
+  const [arrayTechno, setArrayTechno] = useState("");
 
   const date = new Date();
 
@@ -33,7 +33,7 @@ function AddProject() {
           deadline,
           datePublish,
           avancement,
-          techno,
+          tech: arrayTechno,
         },
         {
           withCredentials: true,
@@ -43,12 +43,13 @@ function AddProject() {
       .catch((err) => {
         console.warn(err.response.data.error);
       });
-    swal(
-      `${title}/${description}/${priorite}/${deadline}/${datePublish}/${avancement}/${techno}`
-    );
   };
-  const handlechange = (e) => setTechno(e);
   const handleSelectCompany = (e) => setCompany(e.target.value);
+  const handleSelectTechno = (e) => {
+    if (e.target.checked) {
+      setArrayTechno(`${e.target.value} ; ${arrayTechno}`);
+    }
+  };
   return (
     <form className="form-addProject">
       <div className="form-addProject-firstParty">
@@ -99,30 +100,131 @@ function AddProject() {
             onChange={(e) => setTitle(e.target.value)}
           />
         </label>
-        <label className="form-addProject-label" htmlFor="text">
-          TECHNO
-          <select
-            className="from-input"
-            multiple="multiple"
-            onChange={() => handlechange()}
-          >
-            <option value="1">react</option>
-            <option value="2">node.js</option>
-            <option value="3">ruby</option>
-            <option value="4">php</option>
-            <option value="5">vue.js</option>
-            <option value="6">angular</option>
-            <option value="7">docker</option>
-            <option value="8">sql</option>
-            <option value="9">mangodb</option>
-            <option value="10">mysql</option>
-            <option value="11">python</option>
-            <option value="12">java</option>
-            <option value="13">javascript</option>
-            <option value="14">C#</option>
-            <option value="15">C ++</option>
-          </select>
-        </label>
+        <h2>techno</h2>
+        <div>
+          <label htmlFor="checkbox">
+            react
+            <input
+              onChange={(e) => handleSelectTechno(e)}
+              type="checkbox"
+              value="1"
+            />
+          </label>
+          <label htmlFor="checkbox">
+            node.js
+            <input
+              onChange={(e) => handleSelectTechno(e)}
+              type="checkbox"
+              value="2"
+            />
+          </label>
+          <label htmlFor="checkbox">
+            ruby
+            <input
+              onChange={(e) => handleSelectTechno(e)}
+              type="checkbox"
+              value="3"
+            />
+          </label>
+          <label htmlFor="checkbox">
+            php
+            <input
+              onChange={(e) => handleSelectTechno(e)}
+              type="checkbox"
+              value="4"
+            />
+          </label>
+          <label htmlFor="checkbox">
+            vue.js
+            <input
+              onChange={(e) => handleSelectTechno(e)}
+              type="checkbox"
+              value="5"
+            />
+          </label>
+          <label htmlFor="checkbox">
+            angular
+            <input
+              onChange={(e) => handleSelectTechno(e)}
+              type="checkbox"
+              value="6"
+            />
+          </label>
+          <label htmlFor="checkbox">
+            docker
+            <input
+              onChange={(e) => handleSelectTechno(e)}
+              type="checkbox"
+              value="7"
+            />
+          </label>
+          <label htmlFor="checkbox">
+            sql
+            <input
+              onChange={(e) => handleSelectTechno(e)}
+              type="checkbox"
+              value="8"
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="checkbox">
+            mangodb
+            <input
+              onChange={(e) => handleSelectTechno(e)}
+              type="checkbox"
+              value="9"
+            />
+          </label>
+          <label htmlFor="checkbox">
+            mysql
+            <input
+              onChange={(e) => handleSelectTechno(e)}
+              type="checkbox"
+              value="10"
+            />
+          </label>
+          <label htmlFor="checkbox">
+            python
+            <input
+              onChange={(e) => handleSelectTechno(e)}
+              type="checkbox"
+              value="11"
+            />
+          </label>
+          <label htmlFor="checkbox">
+            java
+            <input
+              onChange={(e) => handleSelectTechno(e)}
+              type="checkbox"
+              value="12"
+            />
+          </label>
+          <label htmlFor="checkbox">
+            javascript
+            <input
+              onChange={(e) => handleSelectTechno(e)}
+              type="checkbox"
+              value="13"
+            />
+          </label>
+          <label htmlFor="checkbox">
+            C#
+            <input
+              onChange={(e) => handleSelectTechno(e)}
+              type="checkbox"
+              value="14"
+            />
+          </label>
+          <label htmlFor="checkbox">
+            C ++
+            <input
+              onChange={(e) => handleSelectTechno(e)}
+              type="checkbox"
+              value="15"
+            />
+          </label>
+        </div>
       </div>
       <div className="form-addProject-SecondParty">
         <label className="form-addProject-label" htmlFor="text">
