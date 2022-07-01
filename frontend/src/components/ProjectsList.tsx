@@ -64,7 +64,7 @@ const { projects, setProjects } = useContext(DataContext);
 
     useEffect(() => {
         axios
-        .get("http://localhost:5001/project/users")
+        .get("http://localhost:5000/project/users")
         .then((res) => res.data)
         .then((data) => {
             setProjects(data);
